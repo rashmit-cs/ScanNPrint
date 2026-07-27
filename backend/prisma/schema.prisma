@@ -1,0 +1,190 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Shop {
+  id           String  @id @default(uuid())
+  name         String
+  ownerName    String
+  email        String  @unique
+  phone        String  @unique
+  passwordHash String
+  upiId        String?
+
+  emailVerified Boolean   @default(false)
+  otpCode       String?
+  otpExpiry     DateTime?
+  otpAttempts   Int       @default(0)
+  otpLastSentAt DateTime?
+
+  resetToken       String?
+  resetTokenExpiry DateTime?
+
+  whatsappJoined Boolean @default(false)
+
+  // Per-shop Razorpay — customer print payments go straight here, PrintDrop never touches this money.
+  // Secret is AES-256-GCM encrypted at rest (see utils/crypto.js). Never returned to the frontend after saving.
+  razorpayKeyId            String?
+  razorpayKeySecretEnc     String?
+  razorpayWebhookSecretEnc String?
+  razorpayConnected        Boolean @default(false)
+
+  subscriptionPlan   String?
+  subscriptionStatus SubStatus @default(NONE)
+  subscriptionEnd    DateTime?
+  pendingPlan        String?   // requested upgrade while a trial/subscription is still active — does NOT touch current access
+  trialUsed          Boolean   @default(false)
+
+  razorpayOrderId    String?
+  razorpayPaymentId  String?
+  subscriptionPaidAt DateTime?
+
+  colorPrice  Float   @default(10)
+  bwPrice     Float   @default(2)
+  isOpen      Boolean @default(true)
+  openingTime String  @default("09:00") // HH:mm, 24-hour, shop's local time
+  closingTime String  @default("21:00") // HH:mm, 24-hour, shop's local time
+  qrGenerated Boolean @default(false)
+  agentSecret     String? // legacy plaintext — auto-migrated to agentSecretHash on next successful agent poll, then cleared. Do not use for new auth checks.
+  agentSecretHash String? // bcrypt hash — this is what /api/agent actually authenticates against now
+
+  // Trial-abuse-prevention / account-deletion additions
+  accountDeletedAt DateTime? // set instead of hard-deleting the row (Order/Printer FKs reference shopId)
+  tokenVersion     Int       @default(0) // bumped on account deletion or password reset to invalidate old JWTs
+
+  createdAt DateTime  @default(now())
+  orders    Order[]
+  printers  Printer[]
+  subscriptionPayments SubscriptionPayment[]
+}
+
+enum SubStatus {
+  NONE
+  TRIAL
+  PENDING_PAYMENT
+  ACTIVE
+  EXPIRED
+}
+
+model Printer {
+  id        String      @id @default(uuid())
+  shopId    String
+  shop      Shop        @relation(fields: [shopId], references: [id], onDelete: Restrict)
+  name      String
+  type      PrinterType @default(BOTH)
+  isDefault Boolean     @default(false)
+  isOnline  Boolean     @default(true)
+  lastSeen  DateTime    @default(now())
+  createdAt DateTime    @default(now())
+
+  @@index([shopId])
+}
+
+enum PrinterType {
+  COLOR
+  BW
+  BOTH
+}
+
+model Order {
+  id          String @id @default(uuid())
+  orderNumber Int    @unique @default(autoincrement()) // short human-friendly number for support/receipts, e.g. #103 — the UUID `id` remains the real key everywhere else
+  shopId String
+  shop   Shop   @relation(fields: [shopId], references: [id], onDelete: Restrict)
+
+  fileName String
+  fileUrl  String
+  filePath String
+
+  printType   PrintType
+  pages       Int       @default(1)
+  copies      Int       @default(1)
+  doubleSided Boolean   @default(false)
+  pageRange   String?
+  consentAt   DateTime? // when the customer confirmed they have the right to print + accepted terms
+  imagesPerPage Int?    @default(1) // for image files only: how many images laid out per printed sheet (1, 2, 4, 6, 9...)
+  imageGroupFiles String? // JSON array of {path,url,originalname} when several images are combined onto shared pages
+
+  amount                Float
+  status                OrderStatus @default(PENDING_PAYMENT)
+  customerClaimedPaidAt DateTime?
+  confirmedAt           DateTime?
+
+  queueSessionId String?
+  queuePosition  Int?
+
+  printerId     String?
+  customerPhone String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  printedAt     DateTime?
+  deletedAt     DateTime?
+
+  razorpayOrderId   String?   @unique
+  razorpayPaymentId String?   @unique
+  paymentMethod     String?
+  paymentGateway    String?
+  paidAt            DateTime?
+
+  @@index([shopId, status])
+  @@index([queueSessionId])
+}
+
+enum PrintType {
+  COLOR
+  BW
+}
+
+// One row per successful shop → PrintDrop subscription payment (via platform Razorpay account).
+// Distinct from Order, which is customer → shop print payments.
+model SubscriptionPayment {
+  id                String   @id @default(uuid())
+  shopId            String
+  shop              Shop     @relation(fields: [shopId], references: [id], onDelete: Restrict)
+  plan              String
+  amount            Int
+  razorpayOrderId   String   @unique
+  razorpayPaymentId String   @unique
+  paidAt            DateTime @default(now())
+
+  @@index([shopId])
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  AWAITING_CONFIRMATION
+  PAID
+  PRINTING
+  PRINTED
+  FAILED
+  REJECTED
+}
+
+// Stores only HMAC hashes of email/phone from deleted accounts — never raw PII.
+// Used at signup to detect "this identity already used a free trial before deleting."
+model DeletedIdentity {
+  id        String   @id @default(uuid())
+  emailHash String   @unique
+  phoneHash String?
+  trialUsed Boolean  @default(false)
+  deletedAt DateTime @default(now())
+
+  @@index([phoneHash])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  shopId    String?  // nullable — some events (e.g. trial denial) may not always have a resolvable shop
+  event     String
+  detail    String?  // short human-readable context, never passwords/OTPs/secrets
+  createdAt DateTime @default(now())
+
+  @@index([shopId])
+  @@index([event])
+}

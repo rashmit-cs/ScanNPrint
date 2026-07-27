@@ -1,0 +1,6 @@
+requests
+schedule
+pywin32
+pymupdf
+pillow
+pypdf

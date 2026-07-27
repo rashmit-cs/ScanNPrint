@@ -1,0 +1,3 @@
+PrintDrop PC Agent
+Version: 1.0.0
+Release Date: 15-Jul-2026

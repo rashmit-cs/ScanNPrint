@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# dependencies
+node_modules/
+
+# customer data / runtime artifacts — should never leave this machine
+backend/uploads/
+pc-agent/printdrop_agent.log
+pc-agent/__pycache__/
+__pycache__/
+*.pyc
+
+# build output
+frontend/dist/

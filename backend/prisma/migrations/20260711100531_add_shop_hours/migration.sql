@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Shop" ADD COLUMN     "closingTime" TEXT NOT NULL DEFAULT '21:00',
+ADD COLUMN     "openingTime" TEXT NOT NULL DEFAULT '09:00';
