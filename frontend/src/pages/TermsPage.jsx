@@ -21,7 +21,7 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen bg-ink">
       <nav className="flex items-center justify-between px-5 py-4 border-b border-white/5">
-        <Link to={homeHref} className="font-display font-bold text-lg">Print<span className="text-accent">Drop</span></Link>
+        <Link to={homeHref} className="font-display font-bold text-lg">Scan<span className="text-accent">NPrint</span></Link>
         <Link to={homeHref} className="text-xs text-muted hover:text-paper">← Home</Link>
       </nav>
       <div className="max-w-2xl mx-auto px-5 py-10 space-y-8 text-sm text-paper/90 leading-relaxed">
@@ -30,17 +30,17 @@ export default function TermsPage() {
           <p className="text-muted text-xs mt-1">Last updated: {new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' })}</p>
         </div>
 
-        <p>PrintDrop has two kinds of users, and these terms apply differently to each:</p>
+        <p>ScanNprint has two kinds of users, and these terms apply differently to each:</p>
         <ul className="list-disc list-inside space-y-1 text-paper">
-          <li><strong>Shops</strong> — print shop owners who subscribe to PrintDrop's software</li>
+          <li><strong>Shops</strong> — print shop owners who subscribe to ScanNprint's software</li>
           <li><strong>Customers</strong> — anyone who scans a Shop's QR code to upload and pay for a print job, without creating any account</li>
         </ul>
-        <p>Using PrintDrop in either role means you agree to the sections below that apply to you.</p>
+        <p>Using ScanNprint in either role means you agree to the sections below that apply to you.</p>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Definitions</h2>
-          <p><strong>"Platform"</strong> or <strong>"PrintDrop"</strong> means this software, including the website, dashboard, and PC Agent.<br/>
-          <strong>"Shop"</strong> means a print shop owner with a PrintDrop account.<br/>
+          <p><strong>"Platform"</strong> or <strong>"ScanNprint"</strong> means this software, including the website, dashboard, and PC Agent.<br/>
+          <strong>"Shop"</strong> means a print shop owner with a ScanNprint account.<br/>
           <strong>"Customer"</strong> means anyone printing through a Shop's QR code, without an account.<br/>
           <strong>"Order"</strong> means a single print job submitted by a Customer to a Shop.</p>
         </section>
@@ -50,8 +50,8 @@ export default function TermsPage() {
           <h2 className="font-display font-bold text-lg text-accent">Part A — For Shops (Subscribers)</h2>
 
           <div className="space-y-2">
-            <h3 className="font-display font-semibold text-paper">A1. What PrintDrop is</h3>
-            <p>PrintDrop is a software platform, not a print shop, not a payment aggregator, and not your employer. You operate an independent business and are responsible for your own equipment, pricing, service quality, tax, and legal compliance.</p>
+            <h3 className="font-display font-semibold text-paper">A1. What ScanNprint is</h3>
+            <p>ScanNprint is a software platform, not a print shop, not a payment aggregator, and not your employer. You operate an independent business and are responsible for your own equipment, pricing, service quality, tax, and legal compliance.</p>
           </div>
 
           <div className="space-y-2">
@@ -61,7 +61,7 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">A3. Print payments belong to you</h3>
-            <p>Money a customer pays for a print job goes directly to you — via your own connected Razorpay account, or UPI if you haven't connected one. PrintDrop takes zero commission, never holds this money, and is not a party to it. Razorpay may charge its own standard payment gateway fees on transactions it processes, separately from and unrelated to PrintDrop — that's between you and Razorpay under their own pricing, and PrintDrop doesn't receive any part of it.</p>
+            <p>Money a customer pays for a print job goes directly to you — via your own connected Razorpay account, or UPI if you haven't connected one. ScanNprint takes zero commission, never holds this money, and is not a party to it. Razorpay may charge its own standard payment gateway fees on transactions it processes, separately from and unrelated to ScanNprint — that's between you and Razorpay under their own pricing, and ScanNprint doesn't receive any part of it.</p>
           </div>
 
           <div className="space-y-2">
@@ -71,7 +71,7 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">A5. No warranty, limited liability</h3>
-            <p>PrintDrop is provided "as is." We're not liable for lost revenue, failed prints, payment disputes, data loss, or the actions of any customer, other Shop, domain registrant, or third party operating an instance of this software. Our total liability in any circumstance is limited to the subscription fees you paid in the preceding month.</p>
+            <p>ScanNprint is provided "as is." We're not liable for lost revenue, failed prints, payment disputes, data loss, or the actions of any customer, other Shop, domain registrant, or third party operating an instance of this software. Our total liability in any circumstance is limited to the subscription fees you paid in the preceding month.</p>
           </div>
 
           <div className="space-y-2">
@@ -81,12 +81,12 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">A7. Maintenance</h3>
-            <p>Keep your printer stocked with paper and ink/toner, and keep the PC Agent running during your business hours so orders print without delay. The PC Agent interacts with your local computer; you install and run it at your own risk — PrintDrop isn't liable for operating-system crashes, driver conflicts, local network issues, or hardware failures on your own machine. If your printer or PC Agent goes offline, incoming orders will simply queue until it's back up.</p>
+            <p>Keep your printer stocked with paper and ink/toner, and keep the PC Agent running during your business hours so orders print without delay. The PC Agent interacts with your local computer; you install and run it at your own risk — ScanNprint isn't liable for operating-system crashes, driver conflicts, local network issues, or hardware failures on your own machine. If your printer or PC Agent goes offline, incoming orders will simply queue until it's back up.</p>
           </div>
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">A8. Local compliance</h3>
-            <p>You're operating an independent business and are responsible for your own tax, licensing, and compliance with local laws applicable to running a print shop — PrintDrop doesn't handle this on your behalf.</p>
+            <p>You're operating an independent business and are responsible for your own tax, licensing, and compliance with local laws applicable to running a print shop — ScanNprint doesn't handle this on your behalf.</p>
           </div>
         </section>
 
@@ -95,8 +95,8 @@ export default function TermsPage() {
           <h2 className="font-display font-bold text-lg text-accent">Part B — For Customers (Printing a Document)</h2>
 
           <div className="space-y-2">
-            <h3 className="font-display font-semibold text-paper">B1. No account, no PrintDrop relationship with you</h3>
-            <p>You don't sign up for PrintDrop — you're using a Shop's own service, which happens to run on PrintDrop's software. Your transaction, including any refund or quality issue, is between you and that Shop.</p>
+            <h3 className="font-display font-semibold text-paper">B1. No account, no ScanNprint relationship with you</h3>
+            <p>You don't sign up for ScanNprint — you're using a Shop's own service, which happens to run on ScanNprint's software. Your transaction, including any refund or quality issue, is between you and that Shop.</p>
           </div>
 
           <div className="space-y-2">
@@ -107,7 +107,7 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">B3. Payment</h3>
-            <p>When you pay online, your payment goes directly to the Shop's own Razorpay account — PrintDrop doesn't receive or hold it. If you pay by UPI and mark "I've Paid," the Shop confirms receipt on their end. Refunds, if any, are handled by the Shop, not PrintDrop.</p>
+            <p>When you pay online, your payment goes directly to the Shop's own Razorpay account — ScanNprint doesn't receive or hold it. If you pay by UPI and mark "I've Paid," the Shop confirms receipt on their end. Refunds, if any, are handled by the Shop, not ScanNprint.</p>
           </div>
 
           <div className="space-y-2">
@@ -117,40 +117,40 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h3 className="font-display font-semibold text-paper">B5. No warranty</h3>
-            <p>Printing depends on the Shop's own hardware, drivers, and internet connection — things PrintDrop doesn't control. We don't guarantee uptime, print quality, or turnaround time.</p>
+            <p>Printing depends on the Shop's own hardware, drivers, and internet connection — things ScanNprint doesn't control. We don't guarantee uptime, print quality, or turnaround time.</p>
           </div>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Acceptable use</h2>
-          <p>Beyond the upload rules in B2, you agree not to: attempt to bypass or interfere with payment processing; scrape, reverse-engineer, or overload the platform with automated requests; impersonate a Shop, a Customer, or PrintDrop staff; harass Shop staff or other Customers; create fake Shop accounts or submit fraudulent orders; or use the platform for spam or unsolicited bulk activity. We reserve the right to rate-limit or block traffic that attempts any of the above, and may suspend access for any of these.</p>
-          <p>If you believe someone is misusing PrintDrop, contact us at <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}`} className="text-accent hover:underline">{import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}</a>.</p>
+          <p>Beyond the upload rules in B2, you agree not to: attempt to bypass or interfere with payment processing; scrape, reverse-engineer, or overload the platform with automated requests; impersonate a Shop, a Customer, or ScanNprint staff; harass Shop staff or other Customers; create fake Shop accounts or submit fraudulent orders; or use the platform for spam or unsolicited bulk activity. We reserve the right to rate-limit or block traffic that attempts any of the above, and may suspend access for any of these.</p>
+          <p>If you believe someone is misusing ScanNprint, contact us at <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}`} className="text-accent hover:underline">{import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}</a>.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Refunds</h2>
-          <p><strong>Subscriptions (Shops):</strong> fees already paid to PrintDrop are non-refundable, except where required by law.</p>
-          <p><strong>Print payments (Customers):</strong> this money goes directly to the Shop, so refund decisions for a print job are made by the Shop, not PrintDrop. Raise refund requests with the Shop directly, quoting your Order Number.</p>
+          <p><strong>Subscriptions (Shops):</strong> fees already paid to ScanNprint are non-refundable, except where required by law.</p>
+          <p><strong>Print payments (Customers):</strong> this money goes directly to the Shop, so refund decisions for a print job are made by the Shop, not ScanNprint. Raise refund requests with the Shop directly, quoting your Order Number.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Indemnification</h2>
-          <p>You agree to cover PrintDrop for any claims, losses, or costs arising from content you upload or print, your violation of these terms, or your violation of any law or third party's rights — to the extent caused by you rather than by PrintDrop.</p>
+          <p>You agree to cover ScanNprint for any claims, losses, or costs arising from content you upload or print, your violation of these terms, or your violation of any law or third party's rights — to the extent caused by you rather than by ScanNprint.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Intellectual property</h2>
-          <p>The PrintDrop software, branding, logo, interface, and underlying code are owned by PrintDrop and its developer. Except for what's needed to use the platform as intended, you may not copy, reverse-engineer, or resell any part of it without permission. This doesn't affect ownership of your own shop's name, content, or the files customers upload.</p>
+          <p>The ScanNprint software, branding, logo, interface, and underlying code are owned by ScanNprint and its developer. Except for what's needed to use the platform as intended, you may not copy, reverse-engineer, or resell any part of it without permission. This doesn't affect ownership of your own shop's name, content, or the files customers upload.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Third-party services</h2>
-          <p>PrintDrop relies on third-party providers — including Razorpay for payments, and standard cloud hosting and database providers — to operate. See the <Link to="/privacy" className="text-accent hover:underline">Privacy Policy</Link> for details on how each is used.</p>
+          <p>ScanNprint relies on third-party providers — including Razorpay for payments, and standard cloud hosting and database providers — to operate. See the <Link to="/privacy" className="text-accent hover:underline">Privacy Policy</Link> for details on how each is used.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Governing law</h2>
-          <p>These terms are governed by the laws of India. Any dispute arising from your use of PrintDrop is subject to the exclusive jurisdiction of the courts of Goa, India.</p>
+          <p>These terms are governed by the laws of India. Any dispute arising from your use of ScanNprint is subject to the exclusive jurisdiction of the courts of Goa, India.</p>
         </section>
 
         <section className="space-y-2">
@@ -174,9 +174,9 @@ export default function TermsPage() {
         </section>
 
         <footer className="pt-4 border-t border-white/8 text-xs text-muted space-y-1">
-          <p>© {new Date().getFullYear()} PrintDrop. All rights reserved.</p>
-          <p>PrintDrop, including its software, website, source code, interface, branding, and logo, is protected by applicable intellectual property laws. Unauthorized copying, reproduction, resale, redistribution, or reverse engineering without prior written permission is prohibited, except where permitted by applicable law.</p>
-          <p>PrintDrop is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
+          <p>© {new Date().getFullYear()} ScanNprint. All rights reserved.</p>
+          <p>ScanNprint, including its software, website, source code, interface, branding, and logo, is protected by applicable intellectual property laws. Unauthorized copying, reproduction, resale, redistribution, or reverse engineering without prior written permission is prohibited, except where permitted by applicable law.</p>
+          <p>ScanNprint is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
         </footer>
       </div>
     </div>

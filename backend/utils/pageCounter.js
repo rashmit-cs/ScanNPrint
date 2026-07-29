@@ -21,7 +21,7 @@ function hasSoffice() {
 // page count. Requires LibreOffice on the server — e.g. in your Dockerfile:
 //   RUN apt-get update && apt-get install -y --no-install-recommends libreoffice
 async function countDocPagesViaLibreOffice(filePath) {
-  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "printdrop-count-"));
+  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "ScanNPrint-count-"));
   try {
     execFileSync("soffice", ["--headless", "--norestore", "--convert-to", "pdf", "--outdir", outDir, filePath], {
       timeout: 60000,

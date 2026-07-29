@@ -8,7 +8,7 @@ import { safeEqual } from '../utils/safeCompare.js';
 
 const router = express.Router();
 
-// PrintDrop has no platform Razorpay account for print money — every shop pays through
+// ScanNprint has no platform Razorpay account for print money — every shop pays through
 // its OWN connected Razorpay account, so the money lands directly with the shopkeeper.
 // This helper builds a Razorpay client from that shop's decrypted credentials.
 function razorpayClientForShop(shop) {
@@ -21,7 +21,7 @@ function razorpayClientForShop(shop) {
 // ── POST /api/print-payment/create-order ─────────────────────────────────
 // Customer taps "Pay Online". Frontend sends { orderId } only.
 // Amount is always read from DB — never trusted from frontend.
-// Payment is created against the SHOP's own Razorpay account, not PrintDrop's.
+// Payment is created against the SHOP's own Razorpay account, not ScanNprint's.
 router.post('/create-order', async (req, res) => {
   try {
     const { orderId } = req.body;

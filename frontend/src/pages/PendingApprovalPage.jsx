@@ -27,7 +27,7 @@ export default function PendingApprovalPage() {
   if (!shop||!planInfo) return <div className="min-h-screen bg-ink flex items-center justify-center"><div className="text-muted text-sm">Loading...</div></div>
 
   const amount = planInfo.prices[shop.subscriptionPlan]
-  const upiLink = `upi://pay?pa=${encodeURIComponent(planInfo.platformUpi)}&pn=PrintDrop&am=${amount}&cu=INR&tn=${encodeURIComponent('PrintDrop '+shop.subscriptionPlan)}`
+  const upiLink = `upi://pay?pa=${encodeURIComponent(planInfo.platformUpi)}&pn=ScanNprint&am=${amount}&cu=INR&tn=${encodeURIComponent('ScanNprint '+shop.subscriptionPlan)}`
 
   return (
     <div className="min-h-screen bg-ink flex items-center justify-center px-4">

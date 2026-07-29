@@ -12,6 +12,6 @@ pc-agent/printdrop_agent.log
 pc-agent/__pycache__/
 __pycache__/
 *.pyc
-
+pc-agent/config.env
 # build output
 frontend/dist/

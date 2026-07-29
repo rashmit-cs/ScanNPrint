@@ -100,7 +100,7 @@ export default function SetupPage() {
           <div className="bg-surface border border-white/8 rounded-2xl p-5">
             <h2 className="font-display font-semibold text-sm text-muted uppercase tracking-wider mb-1">Your UPI ID</h2>
             <p className="text-xs text-muted mb-3">
-              Customer payments go <span className="text-accent font-semibold">directly to this UPI</span>. PrintDrop never touches this money.
+              Customer payments go <span className="text-accent font-semibold">directly to this UPI</span>. ScanNprint never touches this money.
             </p>
             <input type="text" placeholder="yourname@paytm / yourname@ybl / 9XXXXXXXXX@upi"
               value={form.upiId} onChange={set('upiId')}
@@ -115,7 +115,7 @@ export default function SetupPage() {
               {rzpConnected && <span className="text-xs text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full font-semibold">● Connected</span>}
             </div>
             <p className="text-xs text-muted mb-3">
-              Connect your own Razorpay account so customers can pay online instantly. Money settles <span className="text-accent font-semibold">directly to your account</span> — PrintDrop never sees or touches it.
+              Connect your own Razorpay account so customers can pay online instantly. Money settles <span className="text-accent font-semibold">directly to your account</span> — ScanNprint never sees or touches it.
             </p>
 
             {rzpConnected ? (
@@ -201,7 +201,7 @@ export default function SetupPage() {
           <div className="bg-red-950/20 border border-red-500/20 rounded-2xl p-5 mt-2">
             <h2 className="font-display font-semibold text-sm text-red-400 uppercase tracking-wider mb-1">Danger Zone</h2>
             <p className="text-xs text-muted mb-4">
-              This permanently deletes your PrintDrop account — your login, saved settings, connected Razorpay account, and PC Agent credentials. This cannot be undone.
+              This permanently deletes your ScanNprint account — your login, saved settings, connected Razorpay account, and PC Agent credentials. This cannot be undone.
             </p>
 
             <div className="space-y-3">

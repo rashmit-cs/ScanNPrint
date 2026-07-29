@@ -28,7 +28,7 @@ model Shop {
 
   whatsappJoined Boolean @default(false)
 
-  // Per-shop Razorpay — customer print payments go straight here, PrintDrop never touches this money.
+  // Per-shop Razorpay — customer print payments go straight here, ScanNPrint never touches this money.
   // Secret is AES-256-GCM encrypted at rest (see utils/crypto.js). Never returned to the frontend after saving.
   razorpayKeyId            String?
   razorpayKeySecretEnc     String?
@@ -141,7 +141,7 @@ enum PrintType {
   BW
 }
 
-// One row per successful shop → PrintDrop subscription payment (via platform Razorpay account).
+// One row per successful shop → ScanNPrint subscription payment (via platform Razorpay account).
 // Distinct from Order, which is customer → shop print payments.
 model SubscriptionPayment {
   id                String   @id @default(uuid())

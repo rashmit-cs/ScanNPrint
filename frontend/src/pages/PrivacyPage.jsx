@@ -21,7 +21,7 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-ink">
       <nav className="flex items-center justify-between px-5 py-4 border-b border-white/5">
-        <Link to={homeHref} className="font-display font-bold text-lg">Print<span className="text-accent">Drop</span></Link>
+        <Link to={homeHref} className="font-display font-bold text-lg">Scan<span className="text-accent">NPrint</span></Link>
         <Link to={homeHref} className="text-xs text-muted hover:text-paper">← Home</Link>
       </nav>
       <div className="max-w-2xl mx-auto px-5 py-10 space-y-8 text-sm text-paper/90 leading-relaxed">
@@ -31,9 +31,9 @@ export default function PrivacyPage() {
         </div>
 
         <section className="space-y-2">
-          <h2 className="font-display font-semibold text-paper">What PrintDrop is</h2>
-          <p>PrintDrop is a software tool that lets a print shop ("Shop") receive files from its customers via a QR code and print them automatically. PrintDrop is the software provider only — each Shop is independently owned and operated, and is solely responsible for how it runs its own business.</p>
-          <p>This policy covers two different people: <strong>Shops</strong>, who create an account and subscribe, and <strong>Customers</strong>, who use a Shop's QR code without ever creating a PrintDrop account.</p>
+          <h2 className="font-display font-semibold text-paper">What ScanNprint is</h2>
+          <p>ScanNprint is a software tool that lets a print shop ("Shop") receive files from its customers via a QR code and print them automatically. ScanNprint is the software provider only — each Shop is independently owned and operated, and is solely responsible for how it runs its own business.</p>
+          <p>This policy covers two different people: <strong>Shops</strong>, who create an account and subscribe, and <strong>Customers</strong>, who use a Shop's QR code without ever creating a ScanNprint account.</p>
         </section>
 
         {/* ───────── SHOP DATA ───────── */}
@@ -65,20 +65,20 @@ export default function PrivacyPage() {
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">How payments work</h2>
-          <p>There are two separate money flows on PrintDrop:</p>
-          <p><strong>1. Customer → Shop (print payments).</strong> Money goes directly to the Shop's own connected Razorpay account or UPI ID. PrintDrop does not receive, hold, or take any commission on this money, and is not a party to that transaction. Razorpay may deduct its own standard gateway/processing fees from these payments under their own pricing — that's separate from and unrelated to PrintDrop, which doesn't receive any part of it.</p>
-          <p><strong>2. Shop → PrintDrop (subscription).</strong> Shops pay PrintDrop a subscription fee to use the software. This is the only revenue PrintDrop earns.</p>
+          <p>There are two separate money flows on ScanNprint:</p>
+          <p><strong>1. Customer → Shop (print payments).</strong> Money goes directly to the Shop's own connected Razorpay account or UPI ID. ScanNprint does not receive, hold, or take any commission on this money, and is not a party to that transaction. Razorpay may deduct its own standard gateway/processing fees from these payments under their own pricing — that's separate from and unrelated to ScanNprint, which doesn't receive any part of it.</p>
+          <p><strong>2. Shop → ScanNprint (subscription).</strong> Shops pay ScanNprint a subscription fee to use the software. This is the only revenue ScanNprint earns.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Cookies & local storage</h2>
-          <p>PrintDrop doesn't use advertising or tracking cookies. Shops' browsers store a login token locally (in browser storage, not a tracking cookie) so you stay signed in — this is used only to authenticate your session and is never shared with third parties.</p>
+          <p>ScanNprint doesn't use advertising or tracking cookies. Shops' browsers store a login token locally (in browser storage, not a tracking cookie) so you stay signed in — this is used only to authenticate your session and is never shared with third parties.</p>
           <p>We don't currently use third-party analytics or advertising trackers. If that changes, this policy will be updated accordingly.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Third-party services</h2>
-          <p>PrintDrop relies on a small number of infrastructure providers to operate: Razorpay (payment processing), and standard cloud hosting and database providers for our servers and database. These providers process data only as needed to run the platform and have their own privacy policies governing their handling of that data.</p>
+          <p>ScanNprint relies on a small number of infrastructure providers to operate: Razorpay (payment processing), and standard cloud hosting and database providers for our servers and database. These providers process data only as needed to run the platform and have their own privacy policies governing their handling of that data.</p>
         </section>
 
         <section className="space-y-2">
@@ -103,7 +103,7 @@ export default function PrivacyPage() {
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Disclaimer of responsibility</h2>
-          <p>PrintDrop provides software only. We are not responsible for: the conduct of any Shop or its staff; the accuracy, legality, or quality of anything printed; disputes between a Shop and its customers over money, refunds, or service; or how a Shop or any third party (including whoever registers a domain or deploys this software) chooses to configure, operate, brand, or represent the platform. Each Shop operates its own independent business and is solely responsible for its own compliance with applicable laws.</p>
+          <p>ScanNprint provides software only. We are not responsible for: the conduct of any Shop or its staff; the accuracy, legality, or quality of anything printed; disputes between a Shop and its customers over money, refunds, or service; or how a Shop or any third party (including whoever registers a domain or deploys this software) chooses to configure, operate, brand, or represent the platform. Each Shop operates its own independent business and is solely responsible for its own compliance with applicable laws.</p>
         </section>
 
         <section className="space-y-2">
@@ -112,8 +112,8 @@ export default function PrivacyPage() {
         </section>
 
         <footer className="pt-4 border-t border-white/8 text-xs text-muted space-y-1">
-          <p>© {new Date().getFullYear()} PrintDrop. All rights reserved.</p>
-          <p>PrintDrop is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
+          <p>© {new Date().getFullYear()} ScanNprint. All rights reserved.</p>
+          <p>ScanNprint is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
         </footer>
       </div>
     </div>

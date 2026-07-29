@@ -1,5 +1,5 @@
 """
-PrintDrop PC Agent - Final
+ScanNPrint PC Agent - Final
 ==========================
 - Auto-discovers all printers on this PC
 - Polls server every 5s for PAID jobs
@@ -42,7 +42,7 @@ LIBREOFFICE_PATH = os.environ.get('LIBREOFFICE_PATH', '')
 POLL_INTERVAL   = 5    # seconds between job polls
 PRINTER_SYNC    = 60   # seconds between printer re-scan
 
-DOWNLOAD_DIR = Path(tempfile.gettempdir()) / 'printdrop_jobs'
+DOWNLOAD_DIR = Path(tempfile.gettempdir()) / 'ScanNPrint_jobs'
 DOWNLOAD_DIR.mkdir(exist_ok=True)
 
 # ── LOGGING ───────────────────────────────────────────────────────────────
@@ -50,11 +50,11 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler('printdrop_agent.log', encoding='utf-8'),
+        logging.FileHandler('ScanNPrint_agent.log', encoding='utf-8'),
         logging.StreamHandler(sys.stdout)
     ]
 )
-log = logging.getLogger('PrintDrop')
+log = logging.getLogger('ScanNPrint')
 
 HEADERS = {'Authorization': f'Bearer {AGENT_SECRET}:{SHOP_ID}'}
 
@@ -568,7 +568,7 @@ def _print_image_grid(local_files: list, printer_name: str, print_type: str,
 
     pages = [local_files[i:i + images_per_page] for i in range(0, len(local_files), images_per_page)]
 
-    hdc.StartDoc('PrintDrop photo sheet')
+    hdc.StartDoc('ScanNPrint photo sheet')
     try:
         for copy in range(copies):
             for page_files in pages:
@@ -783,7 +783,7 @@ def poll_jobs():
 # ── ENTRY POINT ───────────────────────────────────────────────────────────
 if __name__ == '__main__':
     print('=' * 55)
-    print('  PrintDrop PC Agent — Final')
+    print('  ScanNPrint PC Agent — Final')
     print(f'  Server : {SERVER_URL}')
     print(f'  Shop ID: {SHOP_ID}')
     print(f'  Polling every {POLL_INTERVAL}s')

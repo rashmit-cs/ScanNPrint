@@ -29,11 +29,11 @@ export default function ShopkeeperAgreement() {
           <p className="text-muted text-xs mt-1">Last updated: {new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' })}</p>
         </div>
 
-        <p>This agreement sets out what's expected of you as a Shop on PrintDrop, in more detail than Part A of the <Link to="/terms" className="text-accent hover:underline">Terms of Service</Link>. If anything here conflicts with the Terms, the Terms govern.</p>
+        <p>This agreement sets out what's expected of you as a Shop on ScanNprint, in more detail than Part A of the <Link to="/terms" className="text-accent hover:underline">Terms of Service</Link>. If anything here conflicts with the Terms, the Terms govern.</p>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">1. Your printer & hardware</h2>
-          <p>You're responsible for your own printer, paper, ink or toner, electricity, and internet connection. PrintDrop's software and PC Agent send jobs to your printer, but we don't control or guarantee your hardware's uptime, condition, or performance.</p>
+          <p>You're responsible for your own printer, paper, ink or toner, electricity, and internet connection. ScanNprint's software and PC Agent send jobs to your printer, but we don't control or guarantee your hardware's uptime, condition, or performance.</p>
         </section>
 
         <section className="space-y-2">
@@ -43,17 +43,17 @@ export default function ShopkeeperAgreement() {
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">3. Customer service & disputes</h2>
-          <p>Customers interact with your shop through PrintDrop's software, but the printing relationship is with you. You're responsible for resolving disputes about print quality, missed orders, or service directly with the customer. PrintDrop is not a party to that relationship and doesn't mediate these disputes.</p>
+          <p>Customers interact with your shop through ScanNprint's software, but the printing relationship is with you. You're responsible for resolving disputes about print quality, missed orders, or service directly with the customer. ScanNprint is not a party to that relationship and doesn't mediate these disputes.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">4. Payments & refunds</h2>
-          <p>Customer print payments go directly to your own connected Razorpay account or UPI ID — PrintDrop never holds this money and takes no commission. Refund decisions for print payments are yours to make, in line with applicable consumer protection law. Your PrintDrop subscription fee is separate and billed independently of customer payments.</p>
+          <p>Customer print payments go directly to your own connected Razorpay account or UPI ID — ScanNprint never holds this money and takes no commission. Refund decisions for print payments are yours to make, in line with applicable consumer protection law. Your ScanNprint subscription fee is separate and billed independently of customer payments.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">5. Subscription</h2>
-          <p>Continued access to the platform depends on an active subscription. Fees already paid to PrintDrop are non-refundable except where required by law. If your subscription lapses, your dashboard and QR code stop accepting new orders until you renew.</p>
+          <p>Continued access to the platform depends on an active subscription. Fees already paid to ScanNprint are non-refundable except where required by law. If your subscription lapses, your dashboard and QR code stop accepting new orders until you renew.</p>
         </section>
 
         <section className="space-y-2">
@@ -63,17 +63,17 @@ export default function ShopkeeperAgreement() {
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">7. Local compliance</h2>
-          <p>You're operating an independent business. You're responsible for your own tax, licensing, and compliance with local laws applicable to running a print shop — PrintDrop doesn't handle this on your behalf.</p>
+          <p>You're operating an independent business. You're responsible for your own tax, licensing, and compliance with local laws applicable to running a print shop — ScanNprint doesn't handle this on your behalf.</p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">8. Termination</h2>
-          <p>Either you or PrintDrop can end this arrangement at any time. We may suspend or terminate your account for violating the Terms of Service, the Acceptable Use Policy, or this agreement, for non-payment, or for misuse of the platform.</p>
+          <p>Either you or ScanNprint can end this arrangement at any time. We may suspend or terminate your account for violating the Terms of Service, the Acceptable Use Policy, or this agreement, for non-payment, or for misuse of the platform.</p>
         </section>
 
         <footer className="pt-4 border-t border-white/8 text-xs text-muted space-y-1">
-          <p>© {new Date().getFullYear()} PrintDrop. All rights reserved.</p>
-          <p>PrintDrop is an independent software platform. Physical printing is provided by participating Shops using their own equipment, as independent businesses.</p>
+          <p>© {new Date().getFullYear()} ScanNprint. All rights reserved.</p>
+          <p>ScanNprint is an independent software platform. Physical printing is provided by participating Shops using their own equipment, as independent businesses.</p>
         </footer>
       </div>
     </div>

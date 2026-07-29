@@ -29,7 +29,7 @@ export default function SubscriptionExpiredPage() {
         key:         data.key,
         amount:      data.amountPaise,
         currency:    'INR',
-        name:        'PrintDrop',
+        name:        'ScanNPrint',
         description: `${plan} Subscription`,
         order_id:    data.razorpayOrderId,
 

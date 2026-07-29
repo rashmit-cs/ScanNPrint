@@ -30,7 +30,7 @@ export default function ResetPasswordPage() {
     <div className="min-h-screen bg-ink flex items-center justify-center px-4">
       <div className="w-full max-w-sm fade-up">
         <div className="text-center mb-8">
-          <Link to="/" className="font-display font-bold text-2xl">Print<span className="text-accent">Drop</span></Link>
+          <Link to="/" className="font-display font-bold text-2xl">Scan<span className="text-accent">NPrint</span></Link>
           <p className="text-muted mt-2 text-sm">Set a new password</p>
         </div>
         <div className="bg-surface border border-white/8 rounded-2xl p-6 space-y-4">

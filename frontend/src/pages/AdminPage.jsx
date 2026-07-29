@@ -72,7 +72,7 @@ export default function AdminPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="font-display font-bold text-2xl">PrintDrop Admin</h1>
+            <h1 className="font-display font-bold text-2xl">ScanNprint Admin</h1>
             <p className="text-muted text-sm">{shops.length} total shops</p>
           </div>
           <button onClick={()=>load()} className="text-xs border border-white/10 text-muted px-3 py-1.5 rounded-lg hover:text-paper transition-colors">

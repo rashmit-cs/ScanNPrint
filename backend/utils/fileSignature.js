@@ -2,7 +2,7 @@ import fs from "fs";
 
 // Verifies a file's actual bytes match its claimed extension, so a renamed
 // executable or arbitrary payload can't ride in as "resume.pdf". Checked
-// against magic numbers — cheap and reliable for the types PrintDrop accepts.
+// against magic numbers — cheap and reliable for the types ScanNPrint accepts.
 const SIGNATURES = {
   ".pdf":  [[0x25, 0x50, 0x44, 0x46]],                        // %PDF
   ".jpg":  [[0xFF, 0xD8, 0xFF]],

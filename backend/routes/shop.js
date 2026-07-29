@@ -40,7 +40,7 @@ router.get('/me', authMiddleware, async (req, res) => {
 });
 
 // PUT /api/shop/razorpay-settings — shopkeeper connects their own Razorpay account for print payments.
-// keyId/keySecret come from Razorpay Dashboard > Settings > API Keys (their account, not PrintDrop's).
+// keyId/keySecret come from Razorpay Dashboard > Settings > API Keys (their account, not ScanNprint's).
 // webhookSecret comes from Razorpay Dashboard > Settings > Webhooks, after they add our shared endpoint
 // (see /agent-info style instructions in the dashboard) with event "payment.captured".
 router.put('/razorpay-settings', gateMiddleware, async (req, res) => {
@@ -123,7 +123,7 @@ router.post('/delete-account', authMiddleware, async (req, res) => {
     prisma.shop.update({
       where: { id: shop.id },
       data: {
-        email: `deleted+${shop.id}@printdrop.invalid`,
+        email: `deleted+${shop.id}@ScanNprint.invalid`,
         phone: `deleted-${shop.id}`.slice(0, 30),
         passwordHash: crypto.randomBytes(32).toString('hex'),
         otpCode: null, otpExpiry: null,
@@ -211,9 +211,9 @@ router.post('/agent-secret/regenerate', gateMiddleware, async (req, res) => {
 // GET /api/shop/agent-download — the PC Agent source bundle (Python script + dependencies list
 // + install guide). Static file, doesn't need shop-specific data, so no auth required.
 router.get('/agent-download', (req, res) => {
-  const zipPath = path.join(process.cwd(), 'public', 'downloads', 'PrintDropAgent.zip');
+  const zipPath = path.join(process.cwd(), 'public', 'downloads', 'ScanNprintAgent.zip');
   if (!fs.existsSync(zipPath)) return res.status(404).json({ error: 'Agent package not built on this server yet.' });
-  res.download(zipPath, 'PrintDropAgent.zip');
+  res.download(zipPath, 'ScanNprintAgent.zip');
 });
 
 // Printers

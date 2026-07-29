@@ -8,7 +8,7 @@ import { safeEqual } from '../utils/safeCompare.js';
 
 const router = express.Router();
 
-// Subscriptions (shop → PrintDrop) always use PrintDrop's OWN platform Razorpay account —
+// Subscriptions (shop → ScanNprint) always use ScanNprint's OWN platform Razorpay account —
 // unlike print orders, which use each shop's own connected account. Never mix these up.
 const razorpay = new Razorpay({
   key_id:     process.env.RAZORPAY_KEY_ID,

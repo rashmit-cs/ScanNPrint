@@ -22,7 +22,7 @@ export default function ShopPolicyPage() {
     <div style={styles.page}>
       <div style={styles.card}>
         <h1 style={styles.h1}>{shop.name}</h1>
-        <p style={styles.sub}>Print &amp; document services — pay-per-page printing, powered by PrintDrop</p>
+        <p style={styles.sub}>Print &amp; document services — pay-per-page printing, powered by ScanNprint</p>
 
         <Section title="About this business">
           <p>{shop.name} offers walk-in and online document printing — black &amp; white and color, paid per page. Customers upload a file, pay online or in person, and collect their prints at the shop.</p>

@@ -66,9 +66,9 @@ export default function DashboardPage() {
   const [copied, setCopied] = useState('')
   const [loadError, setLoadError] = useState(false)
 
-  // Prefer a pinned frontend URL (e.g. app.printdrop.in) if configured, so QR codes
+  // Prefer a pinned frontend URL (e.g. app.ScanNprint.in) if configured, so QR codes
   // keep pointing at the customer-facing domain even if the dashboard itself later
-  // moves to a different subdomain (e.g. admin.printdrop.in). Falls back to the
+  // moves to a different subdomain (e.g. admin.ScanNprint.in). Falls back to the
   // current origin — same behavior as before for anyone without this env var set.
   const FRONTEND_URL = (import.meta.env.VITE_FRONTEND_URL || window.location.origin).replace(/\/$/, '')
   const shopUrl = shop ? `${FRONTEND_URL}/shop/${shop.id}` : ''
@@ -144,7 +144,7 @@ export default function DashboardPage() {
   const copy = (text, label) => { navigator.clipboard.writeText(text); setCopied(label); setTimeout(()=>setCopied(''),2000) }
 
   const downloadConfigEnv = (cred) => {
-    const content = `PRINTDROP_SERVER=${cred.serverUrl}\nPRINTDROP_SHOP_ID=${cred.shopId}\nPRINTDROP_SECRET=${cred.secret}\n`
+    const content = `ScanNprint_SERVER=${cred.serverUrl}\nScanNprint_SHOP_ID=${cred.shopId}\nScanNprint_SECRET=${cred.secret}\n`
     const blob = new Blob([content], { type: 'text/plain' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -194,7 +194,7 @@ export default function DashboardPage() {
         const pngUrl = URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = pngUrl
-        a.download = `${safeFileName(shop?.name)}-PrintDrop-QR.png`
+        a.download = `${safeFileName(shop?.name)}-ScanNprint-QR.png`
         a.click()
         setTimeout(() => URL.revokeObjectURL(pngUrl), 1000)
       }, 'image/png')
@@ -230,9 +230,9 @@ export default function DashboardPage() {
       const totalW = printW + dropW
       ctx.textAlign = 'left'
       ctx.fillStyle = '#0A0A0F'
-      ctx.fillText('Print', cx - totalW / 2, y)
+      ctx.fillText('Scan', cx - totalW / 2, y)
       ctx.fillStyle = '#EA580C'
-      ctx.fillText('Drop', cx - totalW / 2 + printW, y)
+      ctx.fillText('NPrint', cx - totalW / 2 + printW, y)
       ctx.textAlign = 'center'
 
       y += 200
@@ -306,14 +306,14 @@ export default function DashboardPage() {
 
       ctx.font = '500 40px Arial, sans-serif'
       ctx.fillStyle = '#999999'
-      ctx.fillText('Powered by PrintDrop', cx, H - 120)
+      ctx.fillText('Powered by ScanNprint', cx, H - 120)
 
       canvas.toBlob((blob) => {
         if (!blob) return
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        a.download = `${safeFileName(shop?.name)}-PrintDrop-Poster.png`
+        a.download = `${safeFileName(shop?.name)}-ScanNprint-Poster.png`
         a.click()
         setTimeout(() => URL.revokeObjectURL(url), 1000)
       }, 'image/png')
@@ -360,7 +360,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-ink">
       <nav className="flex items-center justify-between px-5 py-4 border-b border-white/5">
-        <span className="font-display font-bold text-lg">Print<span className="text-accent">Drop</span></span>
+        <span className="font-display font-bold text-lg">Scan<span className="text-accent">NPrint</span></span>
         <div className="flex items-center gap-3">
           <span className="text-sm text-muted hidden sm:block">{shop.name}</span>
           <Link to="/upgrade" className="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1.5 rounded-lg hover:bg-accent/20 transition-colors font-semibold">🚀 Upgrade</Link>
@@ -539,7 +539,7 @@ export default function DashboardPage() {
 
             <div className="bg-paper rounded-[2rem] p-8 shadow-2xl border border-black/5 flex flex-col items-center w-full max-w-xs">
               <div className="font-display font-bold text-base tracking-tight text-ink">
-                Print<span className="text-accent">Drop</span>
+                Scan<span className="text-accent">NPrint</span>
               </div>
               <div className="text-ink/60 text-xs font-medium mt-1 mb-5">Scan to Print Documents</div>
 
@@ -611,9 +611,9 @@ export default function DashboardPage() {
                     ✓ config.env downloaded. This is the only time the secret is shown — copy the file into your agent folder now.
                   </div>
                   {[
-                    {label:'PRINTDROP_SERVER',value:freshCred.serverUrl,key:'server'},
-                    {label:'PRINTDROP_SHOP_ID',value:freshCred.shopId,key:'shopid'},
-                    {label:'PRINTDROP_SECRET',value:freshCred.secret,key:'secret'},
+                    {label:'ScanNprint_SERVER',value:freshCred.serverUrl,key:'server'},
+                    {label:'ScanNprint_SHOP_ID',value:freshCred.shopId,key:'shopid'},
+                    {label:'ScanNprint_SECRET',value:freshCred.secret,key:'secret'},
                   ].map(item=>(
                     <div key={item.key} className="bg-ink rounded-xl p-3 flex items-center justify-between gap-3">
                       <div className="min-w-0">
@@ -653,7 +653,7 @@ export default function DashboardPage() {
                 <div># Install required packages (first time only)</div>
                 <div>pip install -r requirements.txt</div>
 
-                <div className="pt-2"># Start the PrintDrop PC Agent</div>
+                <div className="pt-2"># Start the ScanNprint PC Agent</div>
                 <div>python agent.py</div>
               </div>
               <p className="text-xs text-muted">

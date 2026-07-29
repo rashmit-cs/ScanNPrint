@@ -29,7 +29,7 @@ export default function AcceptableUsePage() {
           <p className="text-muted text-xs mt-1">Last updated: {new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' })}</p>
         </div>
 
-        <p>This policy sets out what you can't do when using PrintDrop, whether you're a Shop or a Customer. It's part of, and should be read alongside, the <Link to="/terms" className="text-accent hover:underline">Terms of Service</Link>.</p>
+        <p>This policy sets out what you can't do when using ScanNprint, whether you're a Shop or a Customer. It's part of, and should be read alongside, the <Link to="/terms" className="text-accent hover:underline">Terms of Service</Link>.</p>
 
         <section className="space-y-3 bg-surface border border-white/8 rounded-2xl p-5">
           <h2 className="font-display font-bold text-lg text-accent">Content you may not upload or print</h2>
@@ -49,8 +49,8 @@ export default function AcceptableUsePage() {
           <ul className="list-disc list-inside space-y-1.5 text-paper">
             <li>Attempting to bypass, interfere with, or circumvent payment processing</li>
             <li>Scraping, reverse-engineering, or sending automated/bot traffic to the platform</li>
-            <li>Impersonating a Shop, a Customer, or PrintDrop staff</li>
-            <li>Harassing Shop staff, Customers, or PrintDrop support</li>
+            <li>Impersonating a Shop, a Customer, or ScanNprint staff</li>
+            <li>Harassing Shop staff, Customers, or ScanNprint support</li>
             <li>Creating fake Shop accounts or submitting fraudulent orders</li>
             <li>Using the platform for spam or unsolicited bulk activity</li>
           </ul>
@@ -63,12 +63,12 @@ export default function AcceptableUsePage() {
 
         <section className="space-y-2">
           <h2 className="font-display font-semibold text-paper">Reporting misuse</h2>
-          <p>If you believe someone is misusing PrintDrop — uploading infringing content, running a fraudulent Shop, or anything else covered above — contact us at <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}`} className="text-accent hover:underline">{import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}</a>.</p>
+          <p>If you believe someone is misusing ScanNprint — uploading infringing content, running a fraudulent Shop, or anything else covered above — contact us at <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}`} className="text-accent hover:underline">{import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}</a>.</p>
         </section>
 
         <footer className="pt-4 border-t border-white/8 text-xs text-muted space-y-1">
-          <p>© {new Date().getFullYear()} PrintDrop. All rights reserved.</p>
-          <p>PrintDrop is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
+          <p>© {new Date().getFullYear()} ScanNprint. All rights reserved.</p>
+          <p>ScanNprint is an independent software platform that connects customers with independent print shops. Physical printing is provided by the participating Shops using their own equipment.</p>
         </footer>
       </div>
     </div>

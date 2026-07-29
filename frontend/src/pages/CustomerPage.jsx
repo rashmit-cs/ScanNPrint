@@ -166,7 +166,7 @@ export default function CustomerPage() {
         key:         data.key,
         amount:      data.amountPaise,
         currency:    data.currency,
-        name:        'PrintDrop',
+        name:        'ScanNprint',
         description: isQueue ? `Print Order (${result.orders.length} files)` : 'Print Order',
         order_id:    data.razorpayOrderId,
 

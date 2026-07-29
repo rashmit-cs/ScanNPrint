@@ -7,8 +7,8 @@ export default function LandingPage() {
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-5 border-b border-white/5">
         <span className="font-display font-bold text-xl tracking-tight">
-          Print<span className="text-accent">Drop</span>
-        </span>
+  Scan<span className="text-accent">NPrint</span>
+</span>
         <div className="flex gap-3">
           <Link to="/login" className="text-sm text-muted hover:text-paper transition-colors px-4 py-2">
             Login
@@ -61,7 +61,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center text-muted text-xs py-6 border-t border-white/5">
-        PrintDrop — Built for Indian print shops
+        ScanNPrint — Built for Indian print shops
       </footer>
     </div>
   )

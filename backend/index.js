@@ -42,7 +42,7 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 
 // Restrict to known frontend origin(s) instead of '*'. Falls back to '*' only if you haven't
 // set ALLOWED_ORIGINS yet, so this can't silently lock you out during setup — set it before
-// going live. Comma-separate multiple origins, e.g. "https://app.printdrop.in,https://printdrop.in"
+// going live. Comma-separate multiple origins, e.g. "https://app.ScanNprint.in,https://ScanNprint.in"
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
 app.use(cors({
   origin: allowedOrigins.length
@@ -101,7 +101,7 @@ app.use('/api/admin',         adminRoutes);
 app.use('/api/payment',       paymentRoutes);
 app.use('/api/print-payment', printPaymentRoutes);
 
-app.get('/', (req, res) => res.json({ status: 'PrintDrop API running 🚀' }));
+app.get('/', (req, res) => res.json({ status: 'ScanNprint API running 🚀' }));
 
 // ── CRON: File cleanup every 10 min ──────────────────────────────────────────
 cron.schedule('*/10 * * * *', async () => {
@@ -151,7 +151,7 @@ if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, async () => {
-  console.log(`PrintDrop backend on port ${PORT} 🚀`);
+  console.log(`ScanNprint backend on port ${PORT} 🚀`);
   // Test DB connection immediately on startup
   try {
     await prisma.$connect();

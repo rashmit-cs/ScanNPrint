@@ -34,7 +34,7 @@ export default function UpgradePage() {
         key:         data.key,
         amount:      data.amountPaise,
         currency:    'INR',
-        name:        'PrintDrop',
+        name:        'ScanNPrint',
         description: `${plan} Subscription`,
         order_id:    data.razorpayOrderId,
 

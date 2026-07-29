@@ -45,7 +45,7 @@ export default function PlanSelectPage() {
         key: data.key,
         amount: data.amountPaise,
         currency: 'INR',
-        name: 'PrintDrop',
+        name: 'ScanNprint',
         description: `${plan} Subscription`,
         order_id: data.razorpayOrderId,
 

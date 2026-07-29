@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: 'Where does customer payment money go?',
-    a: 'Directly to your own connected Razorpay account (or your UPI ID if you haven\'t connected Razorpay yet). PrintDrop never touches or holds this money — see the Privacy Policy for details.'
+    a: 'Directly to your own connected Razorpay account (or your UPI ID if you haven\'t connected Razorpay yet). ScanNprint never touches or holds this money — see the Privacy Policy for details.'
   },
   {
     q: 'How do I change my subscription plan?',
@@ -28,14 +28,14 @@ const FAQS = [
   },
   {
     q: 'Why is the amount I receive slightly less than what the customer paid?',
-    a: "That's Razorpay's own payment gateway fee, not PrintDrop's — we take zero commission. As an approximate example, at Razorpay's standard published rate (2% + 18% GST on the fee), a ₹10 job nets you about ₹9.76, a ₹100 job nets about ₹97.64, and a ₹500 job nets about ₹488.20. Plain bank-to-bank UPI payments are often charged little or no fee under RBI's zero-MDR rule, so your actual numbers may be better than this. Check your Razorpay dashboard for your exact rate — it can vary by plan and payment method."
+    a: "That's Razorpay's own payment gateway fee, not ScanNprint's — we take zero commission. As an approximate example, at Razorpay's standard published rate (2% + 18% GST on the fee), a ₹10 job nets you about ₹9.76, a ₹100 job nets about ₹97.64, and a ₹500 job nets about ₹488.20. Plain bank-to-bank UPI payments are often charged little or no fee under RBI's zero-MDR rule, so your actual numbers may be better than this. Check your Razorpay dashboard for your exact rate — it can vary by plan and payment method."
   },
 ]
 
 const CUSTOMER_FAQS = [
   {
     q: 'The shop\'s printer is offline or not responding',
-    a: 'This is on the shop\'s end, not something PrintDrop can fix remotely. Let the shopkeeper know directly — they can usually get it back online in a couple of minutes.'
+    a: 'This is on the shop\'s end, not something ScanNprint can fix remotely. Let the shopkeeper know directly — they can usually get it back online in a couple of minutes.'
   },
   {
     q: 'There\'s a paper jam or the printer ran out of paper',
@@ -43,7 +43,7 @@ const CUSTOMER_FAQS = [
   },
   {
     q: 'The printer is out of ink or toner',
-    a: 'Let the shopkeeper know — refilling ink/toner is the shop\'s responsibility, not PrintDrop\'s. Your order will resume once it\'s topped up.'
+    a: 'Let the shopkeeper know — refilling ink/toner is the shop\'s responsibility, not ScanNprint\'s. Your order will resume once it\'s topped up.'
   },
   {
     q: 'My payment went through but the order still shows pending',
@@ -51,11 +51,11 @@ const CUSTOMER_FAQS = [
   },
   {
     q: 'Why is my print taking longer than expected?',
-    a: 'Printing depends on the shop\'s own printer, queue, and internet connection, which PrintDrop doesn\'t control. If it\'s taking unusually long, check with the shopkeeper.'
+    a: 'Printing depends on the shop\'s own printer, queue, and internet connection, which ScanNprint doesn\'t control. If it\'s taking unusually long, check with the shopkeeper.'
   },
   {
     q: 'How do refunds work?',
-    a: 'Your payment goes directly to the shop\'s own account — PrintDrop never holds it. Refunds are handled by the shop, not PrintDrop, so raise refund requests with the shopkeeper directly.'
+    a: 'Your payment goes directly to the shop\'s own account — ScanNprint never holds it. Refunds are handled by the shop, not ScanNprint, so raise refund requests with the shopkeeper directly.'
   },
   {
     q: 'What\'s my Order Number for?',
@@ -63,7 +63,7 @@ const CUSTOMER_FAQS = [
   },
   {
     q: 'How do I contact the shopkeeper?',
-    a: 'PrintDrop doesn\'t provide in-app messaging with the shop — reach out to them directly (in person, by phone, or however you\'d normally contact that shop) and reference your Order Number.'
+    a: 'ScanNprint doesn\'t provide in-app messaging with the shop — reach out to them directly (in person, by phone, or however you\'d normally contact that shop) and reference your Order Number.'
   },
 ]
 

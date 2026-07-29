@@ -32,7 +32,7 @@ export default function HelpButton() {
             className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-paper transition-colors">
             📖 Documentation
           </a>
-          <a href={`mailto:${supportEmail}?subject=${encodeURIComponent('Bug Report — PrintDrop')}`}
+          <a href={`mailto:${supportEmail}?subject=${encodeURIComponent('Bug Report — ScanNPrint')}`}
             className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-paper transition-colors">
             🐞 Report a Bug
           </a>
