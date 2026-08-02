@@ -75,7 +75,7 @@ export default function UpgradePage() {
   return (
     <div className="min-h-screen bg-ink">
       <nav className="flex items-center justify-between px-5 py-4 border-b border-white/5">
-        <Link to="/dashboard" className="font-display font-bold text-lg">Print<span className="text-accent">Drop</span></Link>
+        <Link to="/dashboard" className="font-display font-bold text-lg">Scan<span className="text-accent">NPrint</span></Link>
         <Link to="/dashboard" className="text-xs text-muted hover:text-paper">← Back to dashboard</Link>
       </nav>
       <div className="max-w-md mx-auto px-4 py-10">
