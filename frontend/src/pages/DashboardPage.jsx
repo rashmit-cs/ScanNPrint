@@ -698,6 +698,7 @@ export default function DashboardPage() {
       <footer className="max-w-3xl mx-auto px-4 py-6 flex flex-wrap items-center justify-center gap-4 text-xs text-muted border-t border-white/5">
         <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'tech.support.dev@gmail.com'}`} className="hover:text-paper">✉ Support</a>
         <Link to="/privacy?returnTo=/dashboard" className="hover:text-paper">Privacy</Link>
+        {shop && <Link to={`/shop/${shop.id}/policies`} className="hover:text-paper">My Policy Page</Link>}
         <Link to="/terms?returnTo=/dashboard" className="hover:text-paper">Terms</Link>
       </footer>
     </div>

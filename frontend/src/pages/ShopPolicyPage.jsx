@@ -60,7 +60,7 @@ export default function ShopPolicyPage() {
         </Section>
 
         <p style={styles.footer}>
-          <Link to={`/shop/${shopId}`}>← Back to {shop.name}</Link>
+          <Link to="/dashboard">← Back to Dashboard</Link>
         </p>
       </div>
     </div>
