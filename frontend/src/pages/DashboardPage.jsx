@@ -68,6 +68,11 @@ export default function DashboardPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [tab, setTab] = useState(searchParams.get('tab') || 'overview')
 
+  useEffect(() => {
+    const urlTab = searchParams.get('tab')
+    if (urlTab && urlTab !== tab) setTab(urlTab)
+  }, [searchParams])
+
   const changeTab = (t) => {
     setTab(t)
     setSearchParams({ tab: t })
