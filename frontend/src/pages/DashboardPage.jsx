@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { QRCodeSVG } from 'qrcode.react'
 import api from '../api.js'
+import AnnouncementBanner from '../components/AnnouncementBanner.jsx'
+import SystemStatusCard from '../components/SystemStatusCard.jsx'
+import SetupProgressCard from '../components/SetupProgressCard.jsx'
 
 // Draws a filled/stroked rounded rectangle path on a canvas 2D context.
 function roundRect(ctx, x, y, w, h, r) {
@@ -62,7 +65,13 @@ export default function DashboardPage() {
   const [agentInfo, setAgentInfo] = useState(null)
   const [freshCred, setFreshCred] = useState(null) // {shopId, secret, serverUrl} — only right after generate/regenerate, shown once
   const [agentBusy, setAgentBusy] = useState(false)
-  const [tab, setTab] = useState('overview')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [tab, setTab] = useState(searchParams.get('tab') || 'overview')
+
+  const changeTab = (t) => {
+    setTab(t)
+    setSearchParams({ tab: t })
+  }
   const [copied, setCopied] = useState('')
   const [loadError, setLoadError] = useState(false)
 
@@ -144,7 +153,7 @@ export default function DashboardPage() {
   const copy = (text, label) => { navigator.clipboard.writeText(text); setCopied(label); setTimeout(()=>setCopied(''),2000) }
 
   const downloadConfigEnv = (cred) => {
-    const content = `ScanNprint_SERVER=${cred.serverUrl}\nScanNprint_SHOP_ID=${cred.shopId}\nScanNprint_SECRET=${cred.secret}\n`
+    const content = `PRINTDROP_SERVER=${cred.serverUrl}\nPRINTDROP_SHOP_ID=${cred.shopId}\nPRINTDROP_SECRET=${cred.secret}\n`
     const blob = new Blob([content], { type: 'text/plain' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -370,10 +379,13 @@ export default function DashboardPage() {
       </nav>
 
       <div className="max-w-3xl mx-auto px-4 py-6">
+        <AnnouncementBanner />
+        <SystemStatusCard />
+<SetupProgressCard />
         {/* Tabs */}
         <div className="flex gap-1 bg-surface rounded-xl p-1 mb-6 flex-wrap">
           {['overview','confirm','printers','qr','agent','orders'].map(t=>(
-            <button key={t} onClick={()=>setTab(t)}
+            <button key={t} onClick={()=>changeTab(t)}
               className={`px-4 py-2 rounded-lg text-xs font-display font-semibold transition-all capitalize relative ${tab===t?'bg-accent text-white':'text-muted hover:text-paper'}`}>
               {t==='confirm'?'Confirm Payments':t==='agent'?'🖥 Agent':t==='qr'?'QR Code':t}
               {t==='confirm'&&pending.length>0&&(
@@ -611,9 +623,9 @@ export default function DashboardPage() {
                     ✓ config.env downloaded. This is the only time the secret is shown — copy the file into your agent folder now.
                   </div>
                   {[
-                    {label:'ScanNprint_SERVER',value:freshCred.serverUrl,key:'server'},
-                    {label:'ScanNprint_SHOP_ID',value:freshCred.shopId,key:'shopid'},
-                    {label:'ScanNprint_SECRET',value:freshCred.secret,key:'secret'},
+                    {label:'PRINTDROP_SERVER',value:freshCred.serverUrl,key:'server'},
+                    {label:'PRINTDROP_SHOP_ID',value:freshCred.shopId,key:'shopid'},
+                    {label:'PRINTDROP_SECRET',value:freshCred.secret,key:'secret'},
                   ].map(item=>(
                     <div key={item.key} className="bg-ink rounded-xl p-3 flex items-center justify-between gap-3">
                       <div className="min-w-0">

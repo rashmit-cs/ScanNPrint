@@ -36,6 +36,21 @@ function adminAuth(req, res, next) {
   next();
 }
 
+router.get('/announcement', adminAuth, async (req, res) => {
+  const a = await prisma.announcement.findUnique({ where: { id: 'singleton' } });
+  res.json({ message: a?.message || '', updatedAt: a?.updatedAt || null });
+});
+
+router.post('/announcement', adminAuth, express.json(), async (req, res) => {
+  const { message } = req.body || {};
+  const a = await prisma.announcement.upsert({
+    where: { id: 'singleton' },
+    update: { message: message || null },
+    create: { id: 'singleton', message: message || null },
+  });
+  res.json({ success: true, message: a.message, updatedAt: a.updatedAt });
+});
+
 router.get('/shops', adminAuth, async (req, res) => {
   const shops = await prisma.shop.findMany({
     orderBy: { createdAt: 'desc' },

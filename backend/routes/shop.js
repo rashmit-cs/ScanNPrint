@@ -168,6 +168,62 @@ router.get('/:id/public', async (req, res) => {
   res.json({ id:shop.id, name:shop.name, isOpen:shop.isOpen, colorPrice:shop.colorPrice, bwPrice:shop.bwPrice, upiId:shop.upiId, openingTime:shop.openingTime, closingTime:shop.closingTime, phone:shop.phone });
 });
 
+// GET /api/shop/announcement
+router.get('/announcement', gateMiddleware, async (req, res) => {
+  const a = await prisma.announcement.findUnique({ where: { id: 'singleton' } });
+  res.json({ message: a?.message || '', updatedAt: a?.updatedAt || null });
+});
+
+// GET /api/shop/status — combined dashboard status card data (email/subscription/
+// razorpay/printer/agent) so the frontend doesn't need several separate calls.
+router.get('/status', gateMiddleware, async (req, res) => {
+  const shop = await prisma.shop.findUnique({
+    where: { id: req.shop.id },
+    select: {
+      emailVerified: true,
+      subscriptionStatus: true,
+      razorpayConnected: true,
+      razorpayKeyId: true,
+      razorpayKeySecretEnc: true,
+      razorpayWebhookSecretEnc: true,
+      printers: { select: { isOnline: true, lastSeen: true } },
+    },
+  });
+  if (!shop) return res.status(404).json({ error: 'Shop not found' });
+
+  // "Connected" means the flag AND all three credentials actually exist —
+  // not just that razorpayConnected happens to be true.
+  const razorpayReady = !!(
+    shop.razorpayConnected &&
+    shop.razorpayKeyId &&
+    shop.razorpayKeySecretEnc &&
+    shop.razorpayWebhookSecretEnc
+  );
+
+  const printerCount = shop.printers.length;
+  const printerConnected = shop.printers.some(p => p.isOnline);
+
+  // Agent doesn't have its own heartbeat field — but it re-syncs printers
+  // every 60s while running, so the most recent printer lastSeen IS the
+  // agent's last check-in. Offline = nothing in the last 3 sync cycles.
+  const lastSeenTimes = shop.printers.map(p => p.lastSeen).filter(Boolean);
+  const agentLastSeen = lastSeenTimes.length
+    ? new Date(Math.max(...lastSeenTimes.map(d => new Date(d).getTime())))
+    : null;
+  const agentOnline = !!(agentLastSeen && (Date.now() - agentLastSeen.getTime() < 3 * 60 * 1000));
+
+  res.json({
+    emailVerified: shop.emailVerified,
+    subscriptionStatus: shop.subscriptionStatus,
+    subscriptionActive: ['ACTIVE', 'TRIAL'].includes(shop.subscriptionStatus),
+    razorpayConnected: razorpayReady,
+    printerConnected,
+    printerCount,
+    agentOnline,
+    agentLastSeen,
+  });
+});
+
 // GET /api/shop/stats
 router.get('/stats', gateMiddleware, async (req, res) => {
   const today = new Date(); today.setHours(0,0,0,0);

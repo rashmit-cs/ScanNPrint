@@ -15,12 +15,26 @@ export default function AdminPage() {
   const [shops, setShops] = useState([])
   const [error, setError] = useState('')
   const [filter, setFilter] = useState('all')
+  const [announcement, setAnnouncement] = useState('')
+  const [announcementSaving, setAnnouncementSaving] = useState(false)
 
   const load = async () => {
     try {
       const { data } = await axios.get(`${BASE}/admin/shops`, { withCredentials: true })
       setShops(data); setAuthed(true); setError('')
-    } catch { setAuthed(false) }
+    } catch { setAuthed(false); return }
+    try {
+      const { data } = await axios.get(`${BASE}/admin/announcement`, { withCredentials: true })
+      setAnnouncement(data.message || '')
+    } catch { /* non-critical, leave announcement as-is */ }
+  }
+
+  const saveAnnouncement = async () => {
+    setAnnouncementSaving(true)
+    try {
+      await axios.post(`${BASE}/admin/announcement`, { message: announcement }, { withCredentials: true })
+    } catch(e) { alert(e.response?.data?.error || 'Failed to save announcement') }
+    setAnnouncementSaving(false)
   }
 
   const login = async (k) => {
@@ -93,6 +107,31 @@ export default function AdminPage() {
               <div className="text-xs text-muted">{s.label}</div>
             </div>
           ))}
+        </div>
+
+        {/* Announcement banner editor */}
+        <div className="bg-surface border border-white/8 rounded-2xl p-4 mb-6">
+          <div className="font-display font-semibold text-sm mb-2">Shop Announcement Banner</div>
+          <p className="text-xs text-muted mb-3">Shown to shopkeepers on their dashboard. Leave blank to hide it for everyone.</p>
+          <textarea
+            value={announcement}
+            onChange={e=>setAnnouncement(e.target.value)}
+            rows={3}
+            placeholder="e.g. Scheduled maintenance tonight 11pm–1am, printing may be briefly unavailable."
+            className="w-full bg-ink border border-white/10 rounded-xl px-3 py-2 text-paper text-sm mb-3 focus:outline-none focus:border-accent/50 resize-none"
+          />
+          <div className="flex gap-2">
+            <button onClick={saveAnnouncement} disabled={announcementSaving}
+              className="text-xs bg-accent text-white px-3 py-2 rounded-lg hover:bg-orange-600 transition-colors font-semibold disabled:opacity-50">
+              {announcementSaving ? 'Saving…' : 'Save Announcement'}
+            </button>
+            {announcement && (
+              <button onClick={()=>setAnnouncement('')}
+                className="text-xs border border-white/10 text-muted px-3 py-2 rounded-lg hover:text-paper transition-colors">
+                Clear
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Filter tabs */}

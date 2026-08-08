@@ -91,7 +91,11 @@ enum PrinterType {
   BW
   BOTH
 }
-
+model Announcement {
+  id        String   @id @default("singleton")
+  message   String?
+  updatedAt DateTime @updatedAt
+}
 model Order {
   id          String @id @default(uuid())
   orderNumber Int    @unique @default(autoincrement()) // short human-friendly number for support/receipts, e.g. #103 — the UUID `id` remains the real key everywhere else
