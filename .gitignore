@@ -8,7 +8,7 @@ node_modules/
 
 # customer data / runtime artifacts — should never leave this machine
 backend/uploads/
-pc-agent/printdrop_agent.log
+pc-agent/*.log
 pc-agent/__pycache__/
 __pycache__/
 *.pyc
